@@ -1,0 +1,21 @@
+I built a Rust CLI project called "saqlain-code" and I want to publish it to GitHub for the first time. Walk me through this step by step — don't dump everything at once, guide me one step at a time, tell me exactly what command to type or what to click, wait for me to confirm each step worked before moving to the next, and ask me clarifying questions (like my GitHub username, desired repo name, public vs private, whether I already have a GitHub account / SSH key set up / the `gh` CLI installed) before assuming anything.
+
+CONTEXT ABOUT THE PROJECT:
+- Project name: saqlain-code
+- What it is: A terminal-based AI coding agent written in Rust, similar in spirit to Claude Code / Codex CLI. It connects to a local OpenAI-compatible model server and lets an LLM call real tools (list_files, read_file, write_file, edit_file, delete_file, search_code, run_command) that the Rust program actually executes — with permission prompts, diffs before file changes, path-escape protection, and a hard timeout + closed stdin on shell commands so it can't hang on interactive prompts.
+- It already has: Cargo.toml, src/ (lib.rs + main.rs + agent.rs, api.rs, cli.rs, config.rs, context.rs, diff.rs, errors.rs, history.rs, permissions.rs, tools.rs, types.rs, ui.rs, workspace.rs), tests/ (api_tests.rs, tool_tests.rs, agent_tests.rs), a README.md, a LICENSE (MIT), and a .gitignore.
+- It builds with `cargo build --release`, installs with `cargo install --path .`, and its test suite (`cargo test`) currently has 35 passing tests.
+- The project currently lives as a local folder on my machine (not yet a git repo, or possibly already `git init`'d — please ask me which).
+- My Cargo.toml has several dependencies pinned to exact old versions (e.g. `clap = "=4.4.18"`) because of an unrelated toolchain constraint during development — that's expected and fine, not something to "fix" during this process unless I ask.
+
+WHAT I NEED HELP WITH, IN ORDER:
+1. Confirm whether I need to run `git init` or if it's already a repo (ask me to check with `git status` and show me what to look for).
+2. Help me review/create a proper `.gitignore` for a Rust project (I may already have one — ask me to paste its contents so you can check it's correct, e.g. that it ignores `/target`).
+3. Ask whether I want to commit `Cargo.lock` (explain briefly why binaries usually should commit it and libraries usually shouldn't, since this is a binary CLI tool).
+4. Walk me through making the first commit: staging, writing a good initial commit message, and committing.
+5. Walk me through creating the actual GitHub repository — ask if I want to do this via the GitHub website or via the `gh` CLI (check if I have `gh` installed first), ask for my desired repo name and visibility (public/private).
+6. Walk me through connecting my local repo to the new GitHub remote and pushing for the first time (`git remote add origin ...`, `git branch -M main`, `git push -u origin main`) — ask whether I'm using HTTPS or SSH for git auth, and help me set up a Personal Access Token or SSH key if I don't have one yet.
+7. Suggest reasonable optional polish for the GitHub repo page itself: a short one-line repo description, topics/tags (rust, cli, ai-agent, llm, coding-agent, openai-compatible), and whether I want a GitHub Actions workflow that runs `cargo build`, `cargo test`, `cargo clippy`, and `cargo fmt --check` on every push (offer to write the YAML for me if I want it).
+8. Ask if I want to tag a first release (e.g. v0.1.0) and briefly explain how GitHub Releases work for a Rust binary project.
+
+Go step by step, one thing at a time, and don't move to the next step until I confirm the current one is done. Start by asking me the setup questions you need (GitHub username, repo name preference, public/private, whether `git status` shows an existing repo, whether `gh` CLI is installed, and HTTPS vs SSH preference).
